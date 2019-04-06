@@ -59,10 +59,8 @@
 
         $product = new Product();
         $product->get((int)$idproduct);
-
         $product->setData($_POST);
         $product->save();
-
         $product->setPhoto($_FILES["file"]);
 
         header("Location: /admin/products");
