@@ -5,9 +5,6 @@
     use \Hcode\Model;
     use \Hcode\Mailer;
 
-    /**
-     * 
-     */
     class Product extends Model
     {
         public static function listAll()
@@ -126,6 +123,36 @@
             imagedestroy($image);
 
             $this->checkPhoto();
+        }
+
+        public function getFromURL($desurl)
+        {
+            $sql  = new Sql();
+            $rows = $sql->select("
+                SELECT * 
+                FROM tb_products 
+                WHERE desurl = :desurl 
+                LIMIT 1",
+                [
+                    ":desurl" => $desurl
+                ]
+            );
+
+            $this->setData($rows[0]);
+        }
+
+        public function getCategories()
+        {
+            $sql  = new Sql();
+            return $sql->select("
+                SELECT * FROM tb_categories a
+                INNER JOIN tb_productscategories b
+                ON a.idcategory = b.idcategory
+                WHERE b.idproduct = :idproduct",
+                [
+                    ":idproduct" => $this->getidproduct()
+                ]
+            ) ;
         }
        
     }
