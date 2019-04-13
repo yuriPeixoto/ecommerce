@@ -59,6 +59,7 @@
         $cart = Cart::getFromSession();
 
         $page = new Page();
+<<<<<<< HEAD
         $page->setTpl("cart", [
             "cart"     => $cart->getValues(),
             "products" => $cart->getProducts()
@@ -103,6 +104,9 @@
 
         header("Location: /cart");
         exit;
+=======
+        $page->setTpl("cart");
+>>>>>>> 3c0d83f2e61659dfc9a9add3c655475c9cb10a9f
     });
     
 ?>

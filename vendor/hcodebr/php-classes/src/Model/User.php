@@ -88,7 +88,11 @@
 
         public static function verifyLogin($inadmin = true)
         {
+<<<<<<< HEAD
             if (!User::checkLogin($inadmin)) 
+=======
+            if (User::checkLogin($inadmin)) 
+>>>>>>> 3c0d83f2e61659dfc9a9add3c655475c9cb10a9f
             {
                 header("Location: /admin/login");
                 exit;
